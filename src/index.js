@@ -1,17 +1,50 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { createContext } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Import the functions you need from the SDKs you need
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/firestore";
+import { getAuth } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCfNcEZ8drZllA9EAmWx9zQ7gA_P8wIzws",
+  authDomain: "chat-d7c5e.firebaseapp.com",
+  projectId: "chat-d7c5e",
+  storageBucket: "chat-d7c5e.appspot.com",
+  messagingSenderId: "595499284509",
+  appId: "1:595499284509:web:8dc2521aa83109828b6ef4",
+  measurementId: "G-QKTVG17954",
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+
+const auth = getAuth();
+const firestore = getFirestore(app);
+// const firestore = initializeFirestore(app, {
+//   experimentalForceLongPolling: true, // this line
+//   useFetchStreams: false, // and this line
+// });
+
+export const Context = createContext(null);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
+  <Context.Provider value={{ auth, firestore }}>
     <App />
-  </React.StrictMode>
+  </Context.Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
