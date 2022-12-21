@@ -1,10 +1,11 @@
 import React from "react";
 
-const Message = ({ name, text }) => {
+const Message = ({ name, text, className, time }) => {
   return (
-    <div>
-      <span>{name}</span>
-      <p>{text}</p>
+    <div className={className}>
+      <span className="msgName">{name}</span>
+      <span className="msgText">{text}</span>
+      <span className="msgTime">{time}</span>
     </div>
   );
 };

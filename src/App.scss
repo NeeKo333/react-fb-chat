@@ -75,3 +75,35 @@ $backGroundC: black;
 .App {
   text-align: center;
 }
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  max-width: 50%;
+  min-height: 60px;
+  height: auto;
+  overflow-y: auto;
+}
+
+.msgText {
+  word-wrap: break-word;
+}
+
+.greenMsg {
+  align-self: flex-end;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+}
+.redMsg {
+  align-self: flex-start;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
